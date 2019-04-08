@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using GRMDesktopUI.Helpers;
+using GRMDesktopUI.Library.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,34 @@ namespace GRMDesktopUI.ViewModels
             }
         }
 
+        public bool IsErrorVisable
+        {
+            get
+            {
+                bool output = false;
+
+                if (ErrorMessage?.Length > 0)
+                {
+                    output = true;
+                }
+                return output;
+            }
+        }
+
+        private string _errorMessage;
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                _errorMessage = value;
+                NotifyOfPropertyChange(() => IsErrorVisable);
+                NotifyOfPropertyChange(() => ErrorMessage);
+            }
+        }
+
+
         public bool CanLogIn
         {
             get
@@ -59,11 +88,13 @@ namespace GRMDesktopUI.ViewModels
         {
             try
             {
+                ErrorMessage = "";
                 var result = await _apiHelper.Authenticate(UserName, Password);
+                await _apiHelper.GetLoggedInUserInfo(result.Access_token);
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                ErrorMessage = ex.Message;
             }
         }
 
