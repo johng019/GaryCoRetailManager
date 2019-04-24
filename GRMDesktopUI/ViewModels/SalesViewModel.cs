@@ -34,15 +34,15 @@ namespace GRMDesktopUI.ViewModels
             }
         }
 
-        private string _iItemQuantity;
+        private int _iItemQuantity;
 
-        public string  ItemQuantity
+        public int  ItemQuantity
         {
             get { return _iItemQuantity; }
             set
             {
                 _iItemQuantity = value;
-                NotifyOfPropertyChange(() => Products);
+                NotifyOfPropertyChange(() => ItemQuantity);
             }
         }
 
