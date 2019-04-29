@@ -4,6 +4,7 @@
     [ProductName] NVARCHAR(100) NOT NULL, 
     [Description] NVARCHAR(MAX) NOT NULL, 
     [RetailPrice] MONEY NOT NULL, 
+	[QuantityInStock] Int NOT NULL Default 1,
     [CreateDate] DATETIME2 NOT NULL DEFAULT getutcdate(), 
     [LastModified] DATETIME2 NOT NULL DEFAULT getutcdate()
 )

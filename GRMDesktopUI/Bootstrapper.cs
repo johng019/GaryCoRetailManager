@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using GRMDesktopUI.Helpers;
+using GRMDesktopUI.Library.Api;
 using GRMDesktopUI.Library.Helpers;
 using GRMDesktopUI.Library.Models;
 using GRMDesktopUI.ViewModels;
@@ -29,7 +30,8 @@ namespace GRMDesktopUI
 
         protected override void Configure()
         {
-            _container.Instance(_container);
+            _container.Instance(_container)
+                .PerRequest<IProductEndPoint, ProductEndPoint>();
 
             _container
                 .Singleton<IWindowManager, WindowManager>()
