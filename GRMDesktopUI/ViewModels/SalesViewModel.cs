@@ -131,7 +131,8 @@ namespace GRMDesktopUI.ViewModels
 
         public void AddToCart()
         {
-            CartItemModel existingItem = Cart.First(x => x.Product == SelectedProduct);
+            CartItemModel existingItem = Cart.FirstOrDefault(x => x.Product == SelectedProduct);
+
             if (existingItem != null)
             {
                 existingItem.QuantityInCart += ItemQuantity;
