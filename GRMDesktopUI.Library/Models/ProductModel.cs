@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GRMDesktopUI.Library.Models
 {
-    public class ProductModel
+    public class ProductModell
     {
        
         
@@ -19,6 +19,8 @@ namespace GRMDesktopUI.Library.Models
             public decimal RetailPrice { get; set; }
 
             public int QuantityInStock { get; set; }
-        
+
+            public bool  IsTaxable { get; set; }
+
     }
 }

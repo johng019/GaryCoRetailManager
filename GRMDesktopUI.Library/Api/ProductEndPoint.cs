@@ -17,13 +17,13 @@ namespace GRMDesktopUI.Library.Api
             _apiHelper = apiHelper;
         }
 
-        public async Task<List<ProductModel>> GetAll()
+        public async Task<List<ProductModell>> GetAll()
         {
             using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/Product"))
             {
                 if (response.IsSuccessStatusCode)
                 {
-                    var result = await response.Content.ReadAsAsync<List<ProductModel>>();
+                    var result = await response.Content.ReadAsAsync<List<ProductModell>>();
                     return result;
                 }
                 else

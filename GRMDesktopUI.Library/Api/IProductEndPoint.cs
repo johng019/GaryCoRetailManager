@@ -6,6 +6,6 @@ namespace GRMDesktopUI.Library.Api
 {
     public interface IProductEndPoint
     {
-        Task<List<ProductModel>> GetAll();
+        Task<List<ProductModell>> GetAll();
     }
 }
