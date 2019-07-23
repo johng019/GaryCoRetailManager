@@ -15,11 +15,13 @@ namespace GRMDesktopUI.ViewModels
     {
         IProductEndPoint _productEndPoint;
         IConfigHelper _configHelper;
+        ISaleEndPoint _saleEndPoint;
 
-       public SalesViewModel(IProductEndPoint productEndpoint, IConfigHelper configHelper)
+       public SalesViewModel(IProductEndPoint productEndpoint, IConfigHelper configHelper, ISaleEndPoint saleEndPoint)
         {
             _productEndPoint = productEndpoint;
             _configHelper = configHelper;
+            _saleEndPoint = saleEndPoint;
         }
 
         protected override async void OnViewLoaded(object view)
@@ -181,6 +183,7 @@ namespace GRMDesktopUI.ViewModels
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         public bool CanRemoveFromCart
@@ -200,6 +203,7 @@ namespace GRMDesktopUI.ViewModels
             NotifyOfPropertyChange(() => SubTotal);
             NotifyOfPropertyChange(() => Tax);
             NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCheckOut);
         }
 
         public bool CanCheckOut
@@ -209,23 +213,31 @@ namespace GRMDesktopUI.ViewModels
                 bool output = false;
 
                 //Make sure an item is in the cart
+                if(Cart.Count > 0)
+                {
+                    output = true;
+                }
 
                 return output;
             }
         }
 
-        public void CheckOut()
+        public async Task CheckOut()
         {
+            //Create a SaleModel and post to the API
+            SaleModel sale = new SaleModel();
 
+            foreach (var item in Cart)
+            {
+                sale.SaleDetails.Add(new SaleDetailModel
+                { 
+                    ProductId = item.Product.Id,
+                    Quantity = item.QuantityInCart
+                });
+            }
+
+            await _saleEndPoint.PostSale(sale);
         }
-
-
-
-
-
-
-
-
 
     }
 }

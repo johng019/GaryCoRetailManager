@@ -31,7 +31,8 @@ namespace GRMDesktopUI
         protected override void Configure()
         {
             _container.Instance(_container)
-                .PerRequest<IProductEndPoint, ProductEndPoint>();
+                .PerRequest<IProductEndPoint, ProductEndPoint>()
+                .PerRequest<ISaleEndPoint, SaleEndPoint>();
 
             _container
                 .Singleton<IWindowManager, WindowManager>()
@@ -39,6 +40,7 @@ namespace GRMDesktopUI
                 .Singleton<ILoggedInUserModel, LoggedInUserModel>()
                 .Singleton<IAPIHelper, APIHelper>()
                 .Singleton<IConfigHelper, ConfigHelper>();
+                
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GRMDesktopUI.Library.Helpers
+namespace GRMDataManager.Library
 {
-    public class ConfigHelper : IConfigHelper
+    public class ConfigHelper 
     {
         //Move this from config to the API
-        public decimal GetTaxRate()
+        public static decimal GetTaxRate()
         {
 
             string rateText = ConfigurationManager.AppSettings["taxRate"];
@@ -25,4 +25,5 @@ namespace GRMDesktopUI.Library.Helpers
             return output;
         }
     }
+
 }
