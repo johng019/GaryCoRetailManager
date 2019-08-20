@@ -16,7 +16,7 @@ namespace GRMDataManager.Library.DataAccess
             //Start filling in the sale detail models i will save to the database
             List<SaleDetailDBModel> details = new List<SaleDetailDBModel>();
             ProductData products = new ProductData();
-            var taxrate = ConfigHelper.GetTaxRate()/100;
+            var taxrate = ConfigHelper.GetTaxRate() / 100;
 
             foreach (var item in saleInfo.SaleDetails)
             {
@@ -29,7 +29,7 @@ namespace GRMDataManager.Library.DataAccess
                 //Get the info about this product
                 var productInfo = products.GetProductById(detail.ProductId);
 
-                if(productInfo == null)
+                if (productInfo == null)
                 {
                     throw new Exception($"The prouduct Id of { detail.ProductId }  could not be found in the database.");
                 }
@@ -53,7 +53,7 @@ namespace GRMDataManager.Library.DataAccess
 
             sale.Total = sale.SubTotal + sale.Tax;
 
-            
+
             using (SqlDataAccess sql = new SqlDataAccess())
             {
                 try
@@ -75,22 +75,23 @@ namespace GRMDataManager.Library.DataAccess
 
                     sql.CommitTransaction();
                 }
-                catch 
+                catch
                 {
                     sql.RollBackTransaction();
                     throw;
                 }
 
             }
-            
+
         }
-        //public List<ProductModel> GetProducts()
-        //{
-        //    SqlDataAccess sql = new SqlDataAccess();
 
-        //    var output = sql.LoadData<ProductModel, dynamic>("dbo.spProduct_GetAll", new { }, "GRMData");
+        public List<SaleReportModel> GetSaleReport()
+        {
+            SqlDataAccess sql = new SqlDataAccess();
 
-        //    return output;
-        //}
+            var output = sql.LoadData<SaleReportModel, dynamic>("dbo.spSale_SaleReport", new { }, "GRMData");
+
+            return output;
+        }
     }
 }
