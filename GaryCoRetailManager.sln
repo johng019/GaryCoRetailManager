@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2050
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRMDataManager", "GRMDataManager\GRMDataManager.csproj", "{F8D133ED-5EA0-4B7A-9379-2215391B63AD}"
 EndProject
@@ -12,6 +12,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRMDataManager.Library", "GRMDataManager.Library\GRMDataManager.Library.csproj", "{7E6D780B-E42F-4724-8CE9-36AACF95DE2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRMDesktopUI.Library", "GRMDesktopUI.Library\GRMDesktopUI.Library.csproj", "{746E87B9-5117-4552-AD6F-F44DD3B9E08E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{231CA642-834D-4586-B0B8-211DE04F0DAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{816FF1D3-7B26-4755-86A9-AC832B7509A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{FCEB55C5-C012-4EBC-8FE9-B4A6AE61804B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +50,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F8D133ED-5EA0-4B7A-9379-2215391B63AD} = {816FF1D3-7B26-4755-86A9-AC832B7509A9}
+		{D50598D7-7F7A-416B-82DF-C17DB36584FC} = {231CA642-834D-4586-B0B8-211DE04F0DAE}
+		{8517DEF5-2BA2-4F1A-A29F-D252BFD55F8E} = {FCEB55C5-C012-4EBC-8FE9-B4A6AE61804B}
+		{7E6D780B-E42F-4724-8CE9-36AACF95DE2F} = {816FF1D3-7B26-4755-86A9-AC832B7509A9}
+		{746E87B9-5117-4552-AD6F-F44DD3B9E08E} = {FCEB55C5-C012-4EBC-8FE9-B4A6AE61804B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57490ABE-C62D-4058-B7B1-9AC36171FD17}
